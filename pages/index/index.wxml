@@ -1,0 +1,116 @@
+<!--index.wxml-->
+<!-- 导航 -->
+<view class="">
+  <scroll-view scroll-x="true" class="menubar">
+    <view class="menu">
+      <text class="{{dataId=='0'?'active':''}}" data-id="0">推荐</text>
+      <text  catchtap='OnTouch'  data-id="1">易经</text>
+      <text  catchtap='OnTouch'  data-id="2">奇门</text>
+      <text  catchtap='OnTouch'  data-id="3">国学</text>
+      <text  catchtap='OnTouch'  data-id="4">风水</text>
+      <text  catchtap='OnTouch'  data-id="6">面相</text>
+      <text  catchtap='OnTouch'  data-id="7">紫薇</text>
+    </view>
+  </scroll-view>
+ <!-- 每日易讲 -->
+  <view class="section1 box-pad2">
+    <view class="box-title">
+      <text class="text1">{{daytalk.name}}</text>
+      <navigator class="fl-right more ms-title">
+        <text bindtap='jumpBtn'>全部></text>
+      </navigator>
+    </view>
+    <scroll-view scroll-x="true" class="scroll_box" hover-class="none" >
+      <navigator class="live-box1" hover-class="none" wx:for="{{daytalk.daytalk_data}}" bindtap='videoTo' data-data='{{daytalk.daytalk_data}}' data-sign='1' data-id='{{index}}'>
+        <view class="live-img fl-left">
+          <view class="bg"></view>
+          <image class="icon-video" src="../../images/play-btn.png"></image>
+          <image src="{{item.img}}" class="img"></image>
+        </view>
+        <view class="live-desctil">
+          <text class="n-nowrap-1 in-title">{{item.title}}</text>
+          <view class="remark ma-title">
+            <text>{{item.timelong}}</text>
+            <text>{{item.view_num}}人已学</text>
+          </view>
+        </view>
+      </navigator>
+    </scroll-view>
+
+  </view>
+  <view class="line"></view>
+  <!-- 精品课程 -->
+  <view class="section2 box-pad">
+    <view class="box-title">
+      <text class="text1">{{boutiqueVideo.name}}</text>
+      <navigator url="/pages/course/course" class="fl-right more ms-title" hover-class="none">
+        <text>全部  ></text>
+      </navigator>
+    </view>
+    <view class="in-course" wx:for="{{boutiqueVideo.boutique_data}}">
+      <navigator class="details" hover-class="none" url="/pages/course-details/details?id={{item.video_id}}">
+        <view class="imges fl-left">
+          <view class="audio" wx:if="{{item.thetype==2}}">
+            <image src="../../images/video.png"></image>
+          </view>
+          <view class="audio" wx:if="{{item.thetype==3}}">
+            <image src="../../images/radio.png"></image>
+          </view>    
+          <image class="img" src="{{item.face_img}}"></image>
+        </view>
+        <view class="cont-box">
+          <text class="mx-title font34 n-nowrap-1">{{item.title}}</text>
+          <view class="font28 introduction  n-nowrap-1">
+            <text class="ma-title ">{{item.teacher_name}}</text>
+            <text class="ms-title">{{item.summary}}</text>
+          </view>
+
+          <view class="ms-title font28">
+            <text class="fl-left">{{item.clicks}}人已学</text>
+            <view class="price red-title fl-right">
+              <text class="del" wx:if="{{item.price_member!=item.price}}">¥{{item.price_member}}</text>
+              <text>¥{{item.price}}</text>
+            </view>
+          </view>
+        </view>
+      </navigator>
+    </view>
+
+  </view>
+  <view class="line"></view>
+  <!-- 免费课程 -->
+  <view class="section2 box-pad">
+    <view class="box-title">
+      <text class="text1">{{freeVideo.name}}</text>
+      <navigator url="/pages/course/course" class="fl-right more ms-title" hover-class="none">
+        <text>全部></text>
+      </navigator>
+    </view>
+    <view class="in-course"  wx:for="{{freeVideo.freevideo_data}}">
+      <navigator class="details" hover-class="none" url="/pages/course-details/details?id={{item.video_id}}">
+        <view class="imges fl-left">
+          <view class="audio" wx:if="{{item.thetype==2}}">
+            <image src="../../images/video.png"></image>
+          </view>
+          <view class="audio" wx:if="{{item.thetype==3}}">
+            <image src="../../images/radio.png"></image>
+          </view>    
+          <image class="img" src="{{item.face_img}}"></image>
+        </view>
+        <view class="cont-box">
+          <text class="mx-title font34 n-nowrap-1">{{item.title}}</text>
+          <view class="font28 introduction  n-nowrap-1">
+            <text class="ma-title ">{{item.teacher_name}}</text>
+            <text class="ms-title">{{item.summary}}</text>
+          </view>
+
+          <view class="ms-title font28">
+            <text class="fl-left">{{item.clicks}}次学习</text>
+            <view class="price red-title fl-right">
+            </view>
+          </view>
+        </view>
+      </navigator>
+    </view>
+  </view>
+</view>

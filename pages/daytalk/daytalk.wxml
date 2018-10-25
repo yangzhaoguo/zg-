@@ -1,0 +1,27 @@
+<!--yijinag.wxml-->
+<scroll-view scroll-y="true" style="height: {{windowHeight}}px;" bindscroll="scroll" bindscrolltolower="lower" bindscrolltoupper="upper" catchtouchmove="move">
+<view class="yijiang-main">
+  <navigator hover-class="none"  wx:for="{{daytalks}}" bindtap='videoTo' data-data='{{daytalks}}' data-sign='1' data-id='{{index}}'>
+    <view class="yj-time">
+      <image src="../../images/timeline1.png" class="fl-left timeline timeline1"></image>
+      <view class="yj-timert">
+        <text class="time1">{{item.day}}</text>
+        <text class="time2 ms-title">{{item.month}}月</text>
+      </view>
+    </view>
+    <view class="live-box1">
+      <view class="live-img fl-left">
+        <view class="bg"></view>
+        <image class="icon-video" src="../../images/play-btn.png"></image>
+        <image src="{{item.img}}" class="img"></image>
+      </view>
+      <view class="live-desctil">
+        <text class="n-nowrap-1 in-title">{{item.title}}</text>
+        <view class="remark ma-title">
+          <text>{{item.timelong}}</text>   
+        </view>
+      </view>
+    </view>
+  </navigator>
+</view>
+</scroll-view>

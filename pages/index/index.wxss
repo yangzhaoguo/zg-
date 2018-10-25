@@ -1,0 +1,51 @@
+/**index.wxss**/
+@import "/pages/course/course.wxss";
+
+.section1 {
+  margin-top: 144rpx;
+}
+
+.box-title {
+  line-height: 48rpx;
+}
+
+.box-title .text1 {
+  font-size: 40rpx;
+  font-weight: 900;
+}
+
+.box-title .more {
+  font-size: 24rpx;
+}
+
+/* 每日一讲 */
+.section1 .box-title{
+ padding: 0 32rpx;
+}
+.box-pad2{
+  padding:40rpx 0  0;
+
+}
+.live-desctil .in-title {
+  display: block;
+}
+
+.live-box1 {
+  width: 80%;
+  margin-left: 32rpx;
+}
+
+.scroll_box {
+  width: 100%;
+  height: 184rpx;
+  overflow: hidden;
+  background: #fff;
+  white-space: nowrap;
+  margin-top: 32rpx;
+}
+
+/* 精品课程 */
+
+.section2 .details {
+  margin: 0;
+}

@@ -1,0 +1,25 @@
+
+  <block  wx:for="{{videoLog}}" wx:for-index="id" wx:for-index="index">
+    <view class="li bg-gray list-k1 {{item.id==video_id ? 'f-red' : ''}}" >
+    <view bindtap='clickUrl' data-sign="1"  data-video_id='{{index}}' data-course_id='{{videoLog.course_id}}' data-video_url='{{item.standard_url}}' >
+      <view class="suite fl-left">
+        <text>{{index+1}}</text>
+      </view>
+      <view class='list1'>
+        <text class="title-h2 ">{{item.title}}</text>
+        <view class="l-desc min-title font24">
+          <text>
+      时长{{item.timelong}}
+      </text>
+        <!-- <text>
+    已学 {{item.studytimecount}}%
+      </text> -->
+          <text class="fl-right">
+    {{item.clicks}}次学习
+      </text>
+        </view>
+
+      </view>
+        </view>
+    </view>
+  </block>

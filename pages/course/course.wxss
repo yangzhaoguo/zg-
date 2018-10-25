@@ -1,0 +1,34 @@
+.menubar {
+height:128rpx;
+background:#fff;
+position:fixed;
+left:0;
+top:0;
+z-index:99;
+white-space:nowrap;
+display:flex;
+border-bottom: 16rpx solid #f8f7f7;
+}
+.menu{
+   height:72rpx;
+   margin-top: 28rpx;   
+}
+.menu text{
+    display: inline-block;
+    width:132rpx;
+    height:72rpx;
+    line-height: 72rpx;
+    font-size: 34rpx;
+    text-align: center;
+    border-radius: 200px;
+    background: #f8f7f7;
+    margin-left: 32rpx;
+}
+.menu text.active{
+    color:#FB464C;
+}
+
+/* 视频列表 */
+.content{
+  margin-top: 144rpx
+}

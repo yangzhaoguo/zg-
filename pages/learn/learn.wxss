@@ -1,0 +1,7 @@
+.kejian-main{
+  padding: 0 32rpx;
+ 
+}
+.kejian-main image{
+ width: 100%;
+}

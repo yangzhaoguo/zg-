@@ -1,0 +1,26 @@
+@import "/pages/course-details/details.wxss";
+
+.kejian {
+  padding: 32rpx;
+  margin-bottom: 140rpx;
+}
+
+.kejian image {
+  max-width: 100%;
+}
+
+.n-video {
+  position: fixed;
+  top: 0;
+}
+
+.n-video video {
+  height: 430rpx;
+  width: 100%;
+}
+
+.tab-cont{
+  position: fixed;
+  top: 430rpx;
+  width: 100%
+}

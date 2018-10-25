@@ -1,0 +1,17 @@
+<view class="my-bg">
+  <view class="avatar" wx:if="{{hasUserInfo}}">
+    <image src="{{userInfo.avatarUrl}}"></image>
+    <text class="nicheng">{{userInfo.nickName}}</text>
+  </view>
+</view>
+  <button class="login" wx:if="{{!hasUserInfo && canIUse && getUserInfoFail}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo">点击登录</button>
+   <button open-type="openSetting" bindtap='clearStorageSync'>打开授权设置页</button>
+  <view class=" top">
+  <view class=" my-cont" bindtap='buyLog'>
+    <text class="iconfont icon-ppt fl-left ms-title font40"></text>
+    <view class="right">
+      <text class="mx-title  font34" >购买记录</text>
+      <text class="iconfont icon-enter fl-right "></text>
+    </view>
+  </view>
+</view>

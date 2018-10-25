@@ -1,0 +1,158 @@
+@import "/pages/iconstyle/icon.wxss";
+.audio {
+  position: relative;
+  height: 952rpx;
+  box-sizing: border-box;
+  text-align: center;
+  overflow: hidden;
+  background: #4f5a6e;
+  background: -webkit-linear-gradient(left, #16181f, #4f5a6e);
+  background: -o-linear-gradient(right, #16181f, #4f5a6e);
+  background: -moz-linear-gradient(right, #16181f, #4f5a6e);
+  background: linear-gradient(to right, #16181f, #4f5a6e);
+}
+
+
+.editor {
+  padding: 32rpx;
+  box-sizing: border-box;
+  color: #333;
+  font-size: 28rpx;
+  background: #fff;
+}
+
+.editor view {
+  max-width: 100% !important;
+}
+
+.audio .poster {
+  width: 340rpx;
+  height: 340rpx;
+  border-radius: 100%;
+  border: 10px solid #343c49;
+  margin-top: 242rpx;
+}
+.audio .title{
+  color: #fff;
+  margin-top: 16rpx;
+  padding: 0 32rpx;
+}
+/* 音频滚动条start */
+
+.control-process {
+  position: absolute;
+  bottom: -10px;
+  left: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.control-process .slider {
+ width: 100%;
+margin: 0 10px;
+}
+
+.control-process text {
+  font-size: 24rpx;
+  color: #fff;
+}
+
+/* 音频滚动条end */
+
+.audio-bf{
+  position: relative;
+  margin:54rpx auto;
+  line-height: 176rpx;
+  text-align: center
+
+}
+
+.audio-bf .audio-icon + .audio-icon {
+  margin-left: 100rpx;
+}
+
+.audio-bf .pattern {
+  position: absolute;
+  right: 20rpx;
+}
+
+.audio-bf image {
+  width: 44rpx;
+  height: 44rpx;
+  vertical-align: middle;
+}
+
+.audio-bf .audio-play {
+  width:176rpx;
+  height: 176rpx;
+}
+
+.audio-bf .pattern {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  margin: auto 0;
+  width: 44rpx;
+  height: 44rpx;
+}
+.tab-nav{
+  background: #f3f2f2;
+  height: 98rpx;
+  line-height: 98rpx;
+  width: 100%;
+  display: flex;
+  position: relative;
+}
+.tab-nav .flex-item{
+  flex: 1;
+  text-align: center
+}
+.tab-nav .flex-item .iconfont{
+  margin-right: 16px;
+}
+.tab-nav .line{
+  position: absolute;
+  height: 40rpx;
+  width: 1px;
+  background: #C5C1C1;
+  top:50%; left: 50%;
+  margin-left: -0.5px;
+  margin-top: -20rpx;
+}
+
+/*时间条*/
+.songTimeBar{
+  padding-bottom: 160rpx;
+}
+.songTimeBar .progressBar{
+	height: 80rpx;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+  color: #fff;
+}
+.progressBar .timeBar{
+	position: relative;
+	flex: auto;
+	height: 4rpx;
+	overflow: hidden;
+	background: #cfced1;
+}
+.progressBar .timeBar .playTime{
+	position: absolute;
+	left: -100%;
+	width: 100%;
+	height: 100%;
+	background: #31c27c;
+	transition: all 1s linear;
+}
+.progressBar .startTime,
+.progressBar .totalTime{
+	flex: none;
+	/*color: #808080;*/
+	width: 110rpx;
+	text-align: center;
+	font-size: 24rpx;
+}

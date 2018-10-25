@@ -1,0 +1,106 @@
+<!--yijinag.wxml-->
+<view class="yijiang-main">
+  <navigator hover-class="none">
+    <view class="yj-time">
+      <image src="../../images/timeline1.png" class="fl-left timeline timeline1"></image>
+      <view class="yj-timert">
+        <text class="time1">09</text>
+        <text class="time2 ms-title">10月</text>
+      </view>
+    </view>
+    <view class="live-box1">
+      <view class="live-img fl-left">
+        <view class="bg"></view>
+        <image class="icon-video" src="../../images/play-btn.png"></image>
+        <image src="../../images/live.png" class="img"></image>
+      </view>
+      <view class="live-desctil">
+        <text class="n-nowrap-1 in-title">实用面相课 | 铁口直断富贵姻缘铁口直断</text>
+        <view class="remark ma-title">
+          <text>08月07日 19:50 直播</text>
+          <text>1822人报名</text>
+        </view>
+      </view>
+
+    </view>
+  </navigator>
+    <navigator hover-class="none">
+    <view class="yj-time">
+      <image src="../../images/timeline.png" class="fl-left timeline"></image>
+      <view class="yj-timert">
+        <text class="time1">09</text>
+        <text class="time2 ms-title">10月</text>
+      </view>
+    </view>
+    <view class="live-box1">
+      <view class="live-img fl-left">
+        <view class="bg"></view>
+        <image class="icon-video" src="../../images/play-btn.png"></image>
+        <image src="../../images/live.png" class="img"></image>
+      </view>
+      <view class="live-desctil">
+        <text class="n-nowrap-1 in-title">实用面相课 | 铁口直断富贵姻缘铁口直断</text>
+        <view class="remark ma-title">
+          <text>08月07日 19:50 直播</text>
+          <text>1822人报名</text>
+        </view>
+      </view>
+
+    </view>
+  </navigator>
+    <navigator hover-class="none">
+    <view class="yj-time">
+      <image src="../../images/timeline.png" class="fl-left timeline"></image>
+      <view class="yj-timert">
+        <text class="time1">09</text>
+        <text class="time2 ms-title">10月</text>
+      </view>
+    </view>
+    <view class="live-box1">
+      <view class="live-img fl-left">
+        <view class="bg"></view>
+        <image class="icon-video" src="../../images/play-btn.png"></image>
+        <image src="../../images/live.png" class="img"></image>
+      </view>
+      <view class="live-desctil">
+        <text class="n-nowrap-1 in-title">实用面相课 | 铁口直断富贵姻缘铁口直断</text>
+        <view class="remark ma-title">
+          <text>08月07日 19:50 直播</text>
+          <text>1822人报名</text>
+        </view>
+      </view>
+
+    </view>
+  </navigator>
+    <navigator hover-class="none">
+    <view class="yj-time">
+      <image src="../../images/timeline.png" class="fl-left timeline"></image>
+      <view class="yj-timert">
+        <text class="time1">09</text>
+        <text class="time2">10月</text>
+      </view>
+    </view>
+    <view class="live-box1">
+      <view class="live-img fl-left">
+        <view class="bg"></view>
+        <image class="icon-video" src="../../images/play-btn.png"></image>
+        <image src="../../images/live.png" class="img"></image>
+      </view>
+      <view class="live-desctil">
+        <text class="n-nowrap-1 in-title">实用面相课 | 铁口直断富贵姻缘铁口直断</text>
+        <view class="remark ma-title">
+          <text>08月07日 19:50 直播</text>
+          <text>1822人报名</text>
+        </view>
+      </view>
+
+    </view>
+  </navigator>
+</view>
+
+<view class="pop">
+<view class="pop-main">
+<view class="close"></view>
+<image src="../../images/live.png"></image>
+</view>
+</view>

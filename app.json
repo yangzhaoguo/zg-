@@ -1,0 +1,58 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/course-details/details",
+    "pages/course/course",
+    "pages/order/order",
+    "pages/daytalk/daytalk",
+    "pages/daytalk/daytalk-detail/daytalk-detail",
+    "pages/my/my",
+    "pages/logs/logs",  
+    "pages/course-Play/play",
+    "pages/buyjilu/goumai",
+    "pages/learn/learn",
+    "pages/au-wenjian/kejian",
+    "pages/au-mulu/mulu",
+    "pages/audio-details/audesc",
+    "pages/yijiang/yijiang"
+
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "backgroundColor": "#F8F7F7",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "易先生",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "color": "#8C8383",
+    "selectedColor": "#FB464C",
+    "backgroundColor": "#F8F7F7",
+    "borderStyle": "#F3F2F2",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "images/home.png",
+        "selectedIconPath": "images/home2.png"
+      },
+      {
+        "pagePath": "pages/learn/learn",
+        "text": "学习",
+        "iconPath": "images/mycourse.png",
+        "selectedIconPath": "images/mycourse2.png"
+      },
+      {
+        "pagePath": "pages/my/my",
+        "text": "我的",
+        "iconPath": "images/my.png",
+        "selectedIconPath": "images/my2.png"
+      }
+    ]
+  },
+  "networkTimeout": {
+    "request": 10000,
+    "downloadFile": 10000
+  },
+  "debug": true
+}

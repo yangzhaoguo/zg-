@@ -1,0 +1,31 @@
+<view class="audio"> 
+    <image mode="aspectFill" class="poster" src="{{VideoPic==''? songData.songPic: VideoPic}}"></image>
+   <view class="title font34 n-nowrap-1"> <text>{{songData.songName}}</text></view>
+
+<view class="songTimeBar">
+    <view class="progressBar">
+      <text class="startTime">{{currentTime}}</text>
+      <view class="timeBar">
+        <view class="playTime" style="transform: translateX({{sliderValue}}%)"></view>
+      </view>
+      <text class="totalTime">{{totalTime}}</text>
+    </view>
+  </view>
+</view>
+  <view class=" audio-bf">
+      <image bindtap="bindPrevSong" mode="widthFix" src="../../images/prev.png"  class="audio-icon"></image>
+      <image bindtap="bindPlaySong"  mode="widthFix" src="{{(playStatus || sliderValue>=99)?'../../images/pause.png':'../../images/play.png'}}"  class="audio-icon audio-play"></image>
+      <image bindtap="bindNextSong" mode="widthFix" src="../../images/next.png" class="audio-icon"></image>
+  </view>
+
+  <view class="tab-nav min-title font34">
+  <text class="line"></text>
+  <navigator url='/pages/au-wenjian/kejian?type={{ntype}}&course_id={{video_id}}&id={{songData.songId}}'  class="flex-item">
+  <text class="iconfont icon-ppt"></text>
+  <text>文稿课件</text>
+  </navigator>
+    <navigator url='/pages/au-mulu/mulu?type={{ntype}}&course_id={{video_id}}&id={{songData.songId}}' class="flex-item">
+  <text class="iconfont icon-list"></text>
+  <text>课程目录</text>
+  </navigator>
+  </view>

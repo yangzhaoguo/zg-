@@ -1,0 +1,285 @@
+/**app.wxss**/
+
+page{
+font-family:PingFangSC-Regular;
+}
+.container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+} 
+.fl-left{
+  float: left
+}
+.fl-right{
+  float: right
+}
+.mx-title{
+  color: #190707;
+  font-family:PingFangSC-Medium;
+font-weight:500;
+}
+.ma-title{
+  color: #534545
+}
+.ms-title{
+  color: #8C8383
+}
+.min-title{
+  color: #C5C1C1
+}
+.red-title{
+  color: #FB464C
+}
+.font40{
+  font-size: 40rpx;
+}
+.font34{
+  font-size: 34rpx;
+}
+.font28{
+  font-size: 28rpx;
+}
+.font24{
+  font-size: 24rpx;
+}
+.n-nowrap-2,.n-nowrap-1,.n-nowrap-3{
+    overflow: hidden;
+    -o-text-overflow: ellipsis;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    -moz-line-clamp: 2;
+}
+.n-nowrap-1{
+    -webkit-line-clamp: 1;
+    -moz-line-clamp: 1;
+}
+.n-nowrap-3{
+    -webkit-line-clamp: 3;
+    -moz-line-clamp: 3;
+}
+
+.box-pad{
+  padding: 40rpx 32rpx 0
+}
+
+.in-title{
+   color: #190707;
+   font-size: 34rpx;
+   font-family:PingFangSC-Medium;
+font-weight:500;
+
+}
+.line{
+  height: 16rpx;
+  background: #f8f7f7
+}
+.clearfix {
+  overflow: auto;
+  _height: 1%;
+}
+
+/* 视频课程列表 */
+.details{
+    overflow: hidden;
+    margin:0 32rpx;
+    padding:32rpx 0;
+ 
+}
+.details .imges{
+    position: relative;
+}
+.details .img{
+  width: 212rpx;
+  height: 144rpx;
+  border-radius: 8rpx;
+  overflow: hidden;
+  vertical-align:top;
+
+}
+.details .audio{
+  position: absolute;
+  bottom:8rpx;
+  right:8rpx;
+  width: 40rpx;
+  height: 40rpx;
+}
+.details .audio image{
+    width: 40rpx;
+  height: 40rpx;
+}
+.details .cont-box{
+  margin-left: 236rpx;
+}
+.introduction .ma-title{
+  margin-right: 24rpx;
+}
+.price .del{
+  color: #C5C1C1;
+  text-decoration:line-through;
+  margin-right: 24rpx 
+}
+.introduction{
+  margin: 16rpx 0
+}
+/* 视频课程列表end */
+
+/* 每日易讲列表 */
+.live-img {
+  margin: 20rpx 24rpx 20rpx 0;
+}
+
+.live-img{
+  width: 112rpx;
+  height: 112rpx;
+  overflow: hidden;
+  border-radius: 100%;
+  position: relative;
+}
+ .live-img image.img,.live-img .bg{
+   width: 112rpx;
+  height: 112rpx; 
+ }
+ .live-img .bg{
+background: rgba(0,0,0, 0.2);
+position: absolute;
+top:0;
+left: 0;
+ }
+.live-img .icon-video{
+  width: 24rpx;
+  height: 28rpx;
+  position: absolute;
+  top:50%;
+  left:50%;
+  margin-left: -12rpx;
+   margin-top: -14rpx;
+   z-index: 999
+}
+.live-desctil {
+  margin-left: 136rpx;
+  margin: 30rpx 0 20rpx 136rpx;
+
+}
+
+.live-desctil .remark {
+  font-size: 28rpx;
+  margin-top: 16rpx;
+}
+.live-desctil .remark text{
+  margin-right: 32rpx;
+}
+.live-box1 {
+  border-radius: 200px;
+  box-shadow: 0px 5px 10px #E8E6E6;
+  height: 152rpx;
+
+  display: inline-block;
+  padding: 0 20rpx;
+}
+/* 每日易讲列表end */
+
+/*弹出音频 */
+.pop{
+ 
+  height: 108rpx;
+position:fixed;
+left:0;
+bottom:20rpx;
+width:100%;
+
+}
+.pop-main{
+ height: 108rpx;
+  background: #4F5A6E; 
+  background: -webkit-linear-gradient(left, #16181F,#4F5A6E); 
+  background: -o-linear-gradient(right, #16181F,#4F5A6E); 
+  background: -moz-linear-gradient(right, #16181F,#4F5A6E);
+  background: linear-gradient(to right,#16181F,#4F5A6E);
+  border-radius: 200px;
+  margin:0 32rpx;
+}
+.pop-main .close{
+width: 84rpx;
+height: 84rpx;
+overflow: hidden;
+display: inline-block
+}
+.pop-main .img{
+width: 84rpx;
+height: 84rpx;
+overflow: hidden;
+display: inline-block
+}
+/*弹出音频end */
+
+/* 购买按钮 start */
+.buy-btn{
+  background: #fff;
+border-top: 1px solid #f3f2f2;
+  position: fixed;
+	bottom: 0;
+	width: 100%;
+  height: 130rpx;
+}
+.buy-btn button{
+background: #fb464c;
+color: #fff;
+font-size: 34rpx;
+border-radius:200rpx;
+ margin: 20rpx 32rpx;
+ height: 88rpx;
+}
+.buy-btn button text{
+  margin: 0 5px;
+}
+/* 购买按钮 end */
+.list-k1 .suite{
+  width: 44rpx;
+  height:44rpx;
+  border-radius: 100%;
+  border: 1px solid #C5C1C1;
+  line-height: 44rpx;
+  text-align: center;
+  font-size: 24rpx;
+  color: #C5C1C1;
+  margin-top: 42rpx;
+}
+/* 音频列表 */
+ .list-k1 .red{
+    border: 1px solid #FB464C;
+     color: #FB464C;
+ }
+.list-k1 .list1 {
+  height: 108rpx;
+ padding: 30rpx 0 10rpx 0;
+  margin-left: 84rpx;
+}
+
+.list-k1  .list1 .title-h2  {
+  font-size: 34rpx;
+}
+
+.list-k1  .list1 .l-desc {
+  position: relative;
+  top: -25rpx;
+  
+}
+
+.list-k1 .list1 .l-desc text {
+  display: inline-block;
+}
+.f-red .suite{
+  border: 1px solid #FB464C;
+     color: #FB464C;
+}
+.f-red .title-h2{
+   color: #FB464C;
+}
+
+/* 音频列表 end */

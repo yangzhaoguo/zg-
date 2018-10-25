@@ -1,0 +1,6 @@
+<import src="../../wxParse/wxParse.wxml" />
+<view class="kejian-main">
+  <scroll-view scroll-y="true">
+    <template is="wxParse" data="{{wxParseData:article.nodes}}" />
+  </scroll-view>
+</view>

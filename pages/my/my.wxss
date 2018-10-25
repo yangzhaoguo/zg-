@@ -1,0 +1,55 @@
+@import "/pages/iconstyle/icon.wxss";
+
+.my-bg{
+height: 300rpx;
+background: #f00;
+position: relative;
+
+}
+.avatar{
+position: absolute;
+width: 100%;
+bottom:-150rpx;
+text-align: center
+
+}
+.avatar image{
+width: 166rpx;
+height: 166rpx;
+border-radius: 100%;
+}
+.nicheng,.login{
+font-size:34rpx;
+display: block;
+font-family:PingFangSC-Medium;
+font-weight:500;
+margin-top: 10rpx;
+}
+.login{
+color: #8C8383;
+border: none;
+background: none;
+}
+.login::after {
+border: none;
+}
+.top{
+margin-top: 170rpx; 
+}
+.my-cont{
+height: 110rpx;
+line-height: 110rpx;
+}
+.my-cont .fl-left{
+padding-left: 32rpx;
+}
+.my-cont .right{
+margin-left:96rpx;
+border-bottom: 1px solid #f3f2f2;
+padding-right: 32rpx;
+
+}
+.my-cont .fl-right{
+color: #c0c2c6;
+font-size: 24rpx;
+}

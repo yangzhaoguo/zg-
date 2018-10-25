@@ -1,0 +1,28 @@
+/**yijiang.wxss**/
+.yijiang-main{
+padding: 0 32rpx;
+}
+.yj-time .timeline{
+width: 16rpx;
+height: 112rpx;
+}
+.yj-time .timeline1{
+width: 16rpx;
+height:64rpx;
+margin-top: 30rpx;
+}
+.yj-time .yj-timert{
+ margin-left: 24rpx;
+padding-top: 24rpx;
+}
+.yj-time .yj-timert .time1{
+  font-size: 48rpx;
+  margin-left: 8rpx
+}
+.yj-time .yj-timert .time2{
+  font-size: 24rpx;
+}
+
+.live-box1{
+
+}

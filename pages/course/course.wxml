@@ -1,0 +1,45 @@
+<!--course.wxml-->
+<view class="">
+<scroll-view scroll-x="true" class="menubar">
+  <view class="menu">
+      <text class="{{dataId=='0'?'active':''}}"  bindtap="check" data-id="0">全部</text>
+      <text class="{{dataId=='1'?'active':''}}" bindtap="check" data-id="1">易经</text>
+      <text class="{{dataId=='2'?'active':''}}" bindtap="check" data-id="2">奇门</text>
+      <text class="{{dataId=='3'?'active':''}}" bindtap="check" data-id="3">国学</text>
+      <text class="{{dataId=='4'?'active':''}}" bindtap="check" data-id="4">风水</text>
+      <text class="{{dataId=='6'?'active':''}}" bindtap="check" data-id="6">面相</text>
+      <text class="{{dataId=='7'?'active':''}}" bindtap="check" data-id="7">紫薇</text>
+  </view>
+</scroll-view>
+<view class="menu"></view><view class="menu"></view>
+<scroll-view scroll-y="true" style="height: {{windowHeight}}px;" bindscroll="scroll" bindscrolltolower="lower" bindscrolltoupper="upper">
+<view class="newsBox top"  wx:for="{{course}}">
+      <navigator class="details" url="/pages/course-details/details?id={{item.id}}" open-type="navigate">
+        <view class="imges fl-left">
+          <view class="audio" wx:if="{{item.thetype==2}}">
+              <image src="../../images/video.png"></image>
+          </view>
+          <view class="audio" wx:if="{{item.thetype==3}}">
+              <image src="../../images/radio.png"></image>
+          </view>    
+              <image class="img" src="{{item.face_img}}"></image>
+        </view>
+        <view class="cont-box" >
+            <text class="mx-title font34 n-nowrap-1">{{item.title}}</text>
+            <view class="font28 introduction  n-nowrap-1">
+              <text class="ma-title ">{{item.teacher_name}}</text>
+              <text class="ms-title">{{item.summary}}</text>
+            </view>
+          <view class="ms-title font28">
+            <text class="fl-left">{{item.clicks}}次学习</text>
+            <text class="ms-title">{{item.totals}}节</text>
+            <view class="price red-title fl-right">
+              <text class="del" wx:if="{{item.price_member!=item.price}}">¥{{item.price_member}}</text>
+              <text  wx:if="{{item.price!=0}}">¥{{item.price}}</text>
+            </view>
+          </view>
+        </view>
+      </navigator>
+</view>
+</scroll-view>
+</view>

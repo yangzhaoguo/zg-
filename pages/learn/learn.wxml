@@ -1,0 +1,25 @@
+<block wx:for="{{learn}}">
+  <navigator class="details" hover-class="none" url="/pages/course-details/details?id={{item.course_id}}">
+    <view class="imges fl-left">
+      <view class="audio" wx:if="{{item.thetype==2}}">
+        <image src="../../images/video.png"></image>
+      </view>
+      <view class="audio" wx:if="{{item.thetype==3}}">
+        <image src="../../images/radio.png"></image>
+      </view>
+      <image class="img" src="{{item.face_img}}"></image>
+    </view>
+    <view class="cont-box">
+      <text class="mx-title font34 n-nowrap-1">{{item.title}}</text>
+      <view class="font28 introduction  n-nowrap-1">
+        <text class="ma-title ">{{item.teacher_name}}</text>
+        <text class="ms-title">{{item.summary}}</text>
+      </view>
+
+      <view class="ms-title font28">
+        <text class="fl-left">{{item.clicks}}人已学</text>
+
+      </view>
+    </view>
+  </navigator>
+</block>
