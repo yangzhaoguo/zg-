@@ -2,8 +2,17 @@
   <block  wx:for="{{videoLog}}" wx:for-index="id" wx:for-index="index">
     <view class="li bg-gray list-k1 {{item.id==video_id ? 'f-red' : ''}}" >
     <view bindtap='clickUrl' data-sign="1"  data-video_id='{{index}}' data-course_id='{{videoLog.course_id}}' data-video_url='{{item.standard_url}}' >
-      <view class="suite fl-left">
-        <text>{{index+1}}</text>
+      <view class="suite fl-left"  wx:if="{{item.id==video_id}}">
+        <view class="cntloading" >
+          <view>
+            <text class="cl1"></text>
+            <text class="cl2"></text>
+            <text class="cl3"></text>
+          </view>
+        </view>
+      </view>
+       <view class="suite fl-left" wx:else="{{item.id!=video_id}}">
+         <text>{{index+1}}</text>
       </view>
       <view class='list1'>
         <text class="title-h2 ">{{item.title}}</text>

@@ -1,5 +1,6 @@
 /**index.wxss**/
 @import "/pages/course/course.wxss";
+@import "/pages/iconstyle/icon.wxss";
 
 .section1 {
   margin-top: 144rpx;

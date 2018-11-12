@@ -2,20 +2,18 @@
   "pages": [
     "pages/index/index",
     "pages/course-details/details",
+    "pages/course-Play/play",
     "pages/course/course",
     "pages/order/order",
     "pages/daytalk/daytalk",
-    "pages/daytalk/daytalk-detail/daytalk-detail",
     "pages/my/my",
-    "pages/logs/logs",  
-    "pages/course-Play/play",
+    "pages/logs/logs",   
     "pages/buyjilu/goumai",
     "pages/learn/learn",
     "pages/au-wenjian/kejian",
     "pages/au-mulu/mulu",
     "pages/audio-details/audesc",
     "pages/yijiang/yijiang"
-
   ],
   "window": {
     "backgroundTextStyle": "light",

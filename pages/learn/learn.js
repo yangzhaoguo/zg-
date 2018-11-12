@@ -11,7 +11,6 @@ Page({
     refreshAnimation: {}, //加载更多旋转动画数据
     clientY: 0, //触摸时Y轴坐标
     start: 1,
-
   },
   onShow: function (options) {
     var user = wx.getStorageSync('user');

@@ -1,7 +1,9 @@
 
 var app = getApp();
 var URL = getApp().globalData.url;
-import WxParse from '../../wxParse/wxParse.js'
+import WxParse from '../../wxParse/wxParse.js';
+var Orderpay = require('../../utils/pay.js');//引用封装好的加密解密js
+var user = wx.getStorageSync('user'); 
 Page({
   data: {
     // 页面配置  
@@ -13,140 +15,64 @@ Page({
     videoLog:[],
     dataId:'',
     video_id:'',
-    
+    systemInfo: {},  
     numData: ['一', '二', '三', '四', '五', '六', '七', '八', '九', '十', '十', '十一', '十二', '十三', '十四', '十五', '十六'],
     // 展开折叠
     selectedFlag: [true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true],
   },
-
   onLoad: function (options) {
     var that = this;
-    app.video_id = options.id;
-    console.log('课程id：' + app.video_id);
     var user = wx.getStorageSync('user'); 
-    // 获取系统信息 
-    wx.getSystemInfo({
-      success: function (res) {
-        that.setData({
-          winWidth: res.windowWidth,
-          winHeight: res.windowHeight,
-          
-        });
-      }
-    });
+    if (user === '') {
+      wx.switchTab({
+        url: '/pages/my/my'
+      })
+      console.log('去登录页')
+    } 
     wx.request({
-      url: URL + '/Wx/Ncatalog?course_id=' + app.video_id + '&member_id=' + user.member_id,
+      url: URL + '/Wx/Ncatalog?course_id=' + options.id + '&member_id=' + user.member_id,
       success: function (res) {
         if (res.data.code == '200') {
-          var datas = res.data.data.ncatalog;
+          var datas = res.data.data;
             that.setData({
-              videoLog: res.data.data,
+              videoLog: datas,
           });
-          app.globalData.songRankList = datas
-          wx.request({
-            url: URL + '/Wx/Details?course_id=' + app.video_id + '&member_id=' + user.member_id,
-            success: function (res) {
-              var article = res.data.data.courseware;          
-              WxParse.wxParse('article', 'html', article, that, 5); 
-              if (res.data.code == '200') {
-                that.setData({
-                  video: res.data.data,
-                })
-              }
-            }
-          })
+          if (datas.course_type==2)
+          {
+            app.globalData.videoList = datas;
+          }else{
+            app.globalData.songRankList = res.data.data.ncatalog;
+            app.globalData.teacher_name = res.data.data.teacher_nickname;
+          }
         }
       }
     })
   },
 
-  /* 支付   */
-  pay: function (param) { 
-    var user = wx.getStorageSync('user'); 
-    var openid = user.weixin_code; 
-    var course_id = param.currentTarget.dataset.course_id;
-    var course_name = param.currentTarget.dataset.course_name;
-    var price = param.currentTarget.dataset.price;
-    wx.request({
-      url: URL+'/Wx/Wxpay',//改成你自己的链接
-      data:{
-        'course_id': course_id,
-        'member_id': user.member_id,
-        'course_name': course_name,
-        'price': price*100,
-         'openid':openid
-      },
-      method: 'GET',
-      header: {
-        'Content-Type': 'application/x-www-form-urlencoded'
-      },
-      success: function (res) {
-        console.log(res.data);
-        console.log('调起支付');
-        if(res.data.code==200){
-          wx.requestPayment({
-            'timeStamp': res.data.data.timeStamp,
-            'nonceStr': res.data.data.nonceStr,
-            'package': res.data.data.package,
-            'signType': 'MD5',
-            'paySign': res.data.data.paySign,
-            'success': function (res) {
-              console.log('success');
-              wx.showToast({
-                title: '支付成功',
-                icon: 'success',
-                duration: 3000,
-                mask: false,  //是否显示透明蒙层，防止触摸穿透，默认：false
-                success: function (){
-                  wx.navigateTo({
-                    url: '/pages/learn/learn',
-                  })
-                }, //接口调用成功的回调函数
-                fail: function () { },  //接口调用失败的回调函数
-                complete: function () { } //接口调用结束的回调函数
-              });
-            },
-            'fail': function (res) {
-              console.log('fail');
-            },
-            'complete': function (res) {
-              console.log('complete');
-            }
-          });
-        }else{
-          wx.showToast({
-            title: res.data.info,
-            icon: 'loding',
-            duration: 3000,
-            mask: false,  //是否显示透明蒙层，防止触摸穿透，默认：false
-          });
-        };
-      },
-      fail: function (res) {
-        console.log(res.data)
-      }
-    });
+  pay:function(e)
+  {
+    Orderpay.pay(e);
   },
 
   videlist: function (e) {
     var video = this.data.videoLog;
-    console.log(video);
     var thetype = e.currentTarget.dataset.type;
     var course_id = e.currentTarget.dataset.course_id;
     var id = e.currentTarget.dataset.id;
     var pic = e.currentTarget.dataset.pic;
     var is_active = e.currentTarget.dataset.is_active;
-    console.log(pic);
+    var play_url = e.currentTarget.dataset.url;
+    app.globalData.audioIndex = e.currentTarget.dataset.tid;
+    app.globalData.sign = parseInt(e.currentTarget.dataset.sign, 10);
+    wx.setStorageSync('audioIndex', parseInt(e.currentTarget.dataset.tid, 10));
     if(video.is_buy==1)
     {
       if (thetype == 2) {
         wx.navigateTo({
-          url: '/pages/course-Play/play?id=' + id + '&course_id=' + course_id,
+          url: '/pages/course-Play/play?high_url=' + play_url+'&id=' + id + '&course_id=' + course_id,
         })
       } else {
-        app.globalData.audioIndex = e.currentTarget.dataset.tid;
-        app.globalData.sign = parseInt(e.currentTarget.dataset.sign, 10);
-        wx.setStorageSync('audioIndex', parseInt(e.currentTarget.dataset.tid, 10));
+        app.globalData.pic = pic;
         wx.navigateTo({
           url: '/pages/audio-details/audesc?type=2&id=' + id + '&course_id=' + course_id + '&pic='+ pic,
         })
@@ -155,14 +81,12 @@ Page({
     {
       if(video.price==0)
       {
-        if (thetype == 2) {
+        if (thetype == 2) {       
           wx.navigateTo({
-            url: '/pages/course-Play/play?id=' + id + '&course_id=' + course_id,
+            url: '/pages/course-Play/play?high_url=' + play_url +'&id=' + id + '&course_id=' + course_id,
           })
         } else {
-          app.globalData.audioIndex = e.currentTarget.dataset.tid;
-          app.globalData.sign = parseInt(e.currentTarget.dataset.sign, 10);
-          wx.setStorageSync('audioIndex', parseInt(e.currentTarget.dataset.tid, 10));
+          app.globalData.pic = pic;
           wx.navigateTo({
             url: '/pages/audio-details/audesc?type=2&id=' + id + '&course_id=' + course_id + '&pic=' + pic,
           })
@@ -171,13 +95,12 @@ Page({
         if (is_active==1)
         {
           if (thetype == 2) {
+            
             wx.navigateTo({
-              url: '/pages/course-Play/play?id=' + id + '&course_id=' + course_id,
+              url: '/pages/course-Play/play?high_url=' + play_url +'&id=' + id + '&course_id=' + course_id,
             })
           } else {
-            app.globalData.audioIndex = e.currentTarget.dataset.tid;
-            app.globalData.sign = parseInt(e.currentTarget.dataset.sign, 10);
-            wx.setStorageSync('audioIndex', parseInt(e.currentTarget.dataset.tid, 10));
+            app.globalData.pic = pic;
             wx.navigateTo({
               url: '/pages/audio-details/audesc?type=2&id=' + id + '&course_id=' + course_id + '&pic=' + pic,
             })
@@ -194,28 +117,71 @@ Page({
   // 滑动切换tab 
 
   bindChange: function (e) {
-
+    var user = wx.getStorageSync('user');
     var that = this;
-
-    that.setData({ currentTab: e.detail.current });
+    var course_id = e.target.dataset.course_id;
+    if (e.detail.current  === e.target.dataset.current) {
+      return false;
+    } else {
+      if (e.target.dataset.current == 1) {
+        wx.request({
+          url: URL + '/Wx/Details?course_id=' + course_id + '&member_id=' + user.member_id,
+          success: function (res) {
+            console.log(res.data.data);
+            var article = res.data.data.courseware;
+            WxParse.wxParse('article', 'html', article, that, 5);
+            if (res.data.code == '200') {
+              that.setData({
+                video: res.data.data,
+              })
+            }
+          },
+          fail: res => {
+            this.loading();
+          }        
+        })
+      }
+      that.setData({
+        currentTab: e.detail.current 
+      })
+    }
 
   },
 
   // 点击tab切换 
 
   swichNav: function (e) {
-
+    var user = wx.getStorageSync('user'); 
     var that = this;
-    var video_id = app.video_id;
+    var course_id = e.target.dataset.course_id;
     if (this.data.currentTab === e.target.dataset.current) {
       return false;
     } else {
+      if (e.target.dataset.current==0){
+        wx.request({
+          url: URL + '/Wx/Details?course_id=' + course_id + '&member_id=' + user.member_id,
+          success: function (res) {
+            console.log(res.data.data);
+            var article = res.data.data.courseware;
+            WxParse.wxParse('article', 'html', article, that, 5);
+            if (res.data.code == '200') {
+              that.setData({
+                video: res.data.data,
+              })
+            }
+          },
+          fail: res => {
+            this.loading();
+          }   
+        })
+      }
       that.setData({
         currentTab: e.target.dataset.current
       })
     }
-
   },
+
+
 // 折叠面板
  changeToggle: function (e) {
     var index = e.currentTarget.dataset.index;
@@ -228,6 +194,14 @@ Page({
    console.log(this.data.selectedFlag);
     this.setData({
       selectedFlag: this.data.selectedFlag
+    })
+  },
+
+  loading: function () {
+    wx.showToast({
+      title: '加载中',
+      icon: 'loading',
+      duration: 2500
     })
   },
 

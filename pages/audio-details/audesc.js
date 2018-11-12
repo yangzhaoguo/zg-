@@ -26,10 +26,16 @@ Page({
   },
   onShow:function()
   {
+    var user = wx.getStorageSync('user');
+    if (user === '') {
+      wx.switchTab({
+        url: '/pages/my/my'
+      })
+    } 
     let that=this;
     let pages = getCurrentPages();
     let currPage = pages[pages.length - 1];
-    console.log(currPage.data.audioIndex);
+    console.log("首页："+currPage.data.audioIndex);
     wx.setStorageSync('audioIndex', parseInt(currPage.data.audioIndex, 10));
     that.play(); 
   },
@@ -41,8 +47,8 @@ Page({
     let rankList = app.globalData.songRankList;  //获取播放的音频列表
     let newSongList = app.globalData.newSongList;
     let sign = app.globalData.sign;
-    console.log(rankList);
-    console.log(options.pic);
+    console.log("播放的列表："+rankList);
+    options.pic= app.globalData.pic;
     console.log("播放的音频列表");
     that.setData({
       songRankList: rankList,
@@ -52,6 +58,7 @@ Page({
       video_id: options.course_id,
       ntype:options.type
     })
+    app.globalData.ntype=options.type
   
     //wx.setStorageSync('audioIndex', rankList.cur_count-1);
     //  获取本地存储在audioIndex的值
@@ -203,16 +210,14 @@ Page({
         songPic = rankFormatTwo.img
       } else {
         console.log(4);
-        console.log(songRankList);
-      
+        console.log(songRankList);     
         let rankFormatTwo = songRankList[that.data.audioIndex];
         songId = rankFormatTwo.id;
         songPicId = rankFormatTwo.id;
         songName = rankFormatTwo.title;
         standard_url = rankFormatTwo.standard_url
         songPic = rankFormatTwo.img
-      }
-      
+      }    
     }
     that.setData({
       songData: {
@@ -222,6 +227,10 @@ Page({
         songName: songName,
       },
     })
+    app.globalData.songData.songId = songId;
+    app.globalData.songData.standard_url = standard_url;
+    app.globalData.songData.songPic = songPic;
+    app.globalData.songData.songName = songName;
 
     wx.playBackgroundAudio({
       dataUrl: standard_url,
@@ -249,8 +258,9 @@ Page({
     })
   },
   //时间转换
-  stotime: function (s) {
+  stotime: function (ss) {
     let t = '';
+    var s = new Date(ss);
     if (s > -1) {
       // let hour = Math.floor(s / 3600);
       let min = Math.floor(s / 60) % 60;

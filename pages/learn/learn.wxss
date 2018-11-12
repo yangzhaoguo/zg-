@@ -1,3 +1,5 @@
+@import "/pages/iconstyle/icon.wxss";
+
 .kejian-main{
   padding: 0 32rpx;
  

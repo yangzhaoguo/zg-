@@ -1,25 +1,21 @@
 const app = getApp()
-var URL = getApp().globalData.url;
+var util = require('../../utils/login.js');
 Page({
   data: {
     userInfo: {},
     hasUserInfo: false,
-    getUserInfoFail: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo')
   },
-  //事件处理函数
-  bindViewTap: function () {
-    wx.navigateTo({
-      url: '../logs/logs'
-    })
-  },
+
   onLoad: function () {
-    console.log(wx.getStorageSync('user'));
-    if (app.globalData.userInfo) {
+    var user =wx.getStorageSync('user');
+    console.log(this.hasUserInfo);
+    if (!user) {
       console.log(1)
+      console.log(app.globalData.userInfo)
       this.setData({
         userInfo: app.globalData.userInfo,
-        hasUserInfo: true
+        hasUserInfo: false,
       })
     } else {
       console.log(3)
@@ -27,6 +23,7 @@ Page({
       wx.getUserInfo({
         success: res => {
           app.globalData.userInfo = res.userInfo
+          app.globalData.hasUserInfo = true
           this.setData({
             userInfo: res.userInfo,
             hasUserInfo: true
@@ -35,7 +32,7 @@ Page({
         fail: res => {
           console.log(4);
           this.setData({
-            getUserInfoFail: true
+            hasUserInfo: true
           })
         }
       })
@@ -44,10 +41,11 @@ Page({
   getUserInfo: function (e) {
     console.log(5);
     console.log(e)
-    this.login(e)
+    util.login(e)
     if (e.detail.userInfo) {
-      this.login(e);
+      util.login(e);
       app.globalData.userInfo = e.detail.userInfo
+      app.globalData.hasUserInfo = true
       this.setData({
         userInfo: e.detail.userInfo,
         hasUserInfo: true
@@ -55,66 +53,26 @@ Page({
     } else {
       this.openSetting();
     }
-  },
-  login: function (e) {
-    console.log(111)
-    var that = this
-    wx.login({
-      success: function (res) {
-        var code = res.code;
-        console.log(code);
-        wx.request({
-          url: URL+'/Wx/WxLogin',
-          data: 'code=' + code + '&rawData=' + e.detail.rawData,    //参数为键值对字符串
-          method: 'POST',
-          header: {
-            //设置参数内容类型为x-www-form-urlencoded
-            'content-type': 'application/x-www-form-urlencoded',
-            'Accept': 'application/json'
-          },
-          success: function (res) {
-            wx.setStorageSync('user', res.data.data.personal);
-            console.log(res.data.data.personal)
-            console.log('同步保存成功')
-          },
-          fail: function (res) {
-            console.log(1)
-            that.setData({
-              getUserInfoFail: true
-            })
-          }
-        })
-        wx.getUserInfo({
-          success: function (res) {         
-            console.log(7);
-            app.globalData.userInfo = res.userInfo
-            that.setData({
-              getUserInfoFail: false,
-              userInfo: res.userInfo,
-              hasUserInfo: true
-            })
-            //平台登录
-          },
-          fail: function (res) {
-            console.log(8);
-            console.log(res);
-            that.setData({
-              getUserInfoFail: true
-            })
-          }
-        })
-      }
-    })
-  },
+  }, 
 
   clearStorageSync:function(){
     wx.clearStorageSync()
   },
   
   buyLog: function () {
+    if (wx.getStorageSync('user')=="")
+    {
+      wx.showToast({
+        title: "请登录",
+        duration: 3000,
+        mask: false,  //是否显示透明蒙层，防止触摸穿透，默认：false
+      });
+      this.onLoad();
+    }else{
     wx.navigateTo({
       url: '/pages/buyjilu/goumai',
     })
+    }
   },
 
   //跳转设置页面授权
@@ -125,7 +83,7 @@ Page({
         success: function (res) {
           console.log(9);
           //尝试再次登录
-          that.login()
+          util.login()
         }
       })
     } else {

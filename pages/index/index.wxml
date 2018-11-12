@@ -16,18 +16,18 @@
   <view class="section1 box-pad2">
     <view class="box-title">
       <text class="text1">{{daytalk.name}}</text>
-      <navigator class="fl-right more ms-title">
+      <navigator url='/pages/daytalk/daytalk' class="fl-right more ms-title">
         <text bindtap='jumpBtn'>全部></text>
       </navigator>
     </view>
     <scroll-view scroll-x="true" class="scroll_box" hover-class="none" >
-      <navigator class="live-box1" hover-class="none" wx:for="{{daytalk.daytalk_data}}" bindtap='videoTo' data-data='{{daytalk.daytalk_data}}' data-sign='1' data-id='{{index}}'>
+      <navigator class="live-box1" hover-class="none" wx:for="{{daytalk.daytalk_data}}" wx:key="index">
         <view class="live-img fl-left">
           <view class="bg"></view>
-          <image class="icon-video" src="../../images/play-btn.png"></image>
+          <image class="icon-video" bindtap='videoTo' src="{{playStatus && item.id==songData.songId?'../../images/pause-btn.png':'../../images/play-btn.png'}}" data-data='{{daytalk.daytalk_data}}' data-sign='1' data-id="{{index}}" data-item='{{item}}'></image>
           <image src="{{item.img}}" class="img"></image>
         </view>
-        <view class="live-desctil">
+        <view class="live-desctil" bindtap='videoTo' data-item='{{item}}' data-data='{{daytalk.daytalk_data}}' data-sign='1' data-id='{{index}}'>
           <text class="n-nowrap-1 in-title">{{item.title}}</text>
           <view class="remark ma-title">
             <text>{{item.timelong}}</text>
@@ -36,18 +36,18 @@
         </view>
       </navigator>
     </scroll-view>
-
   </view>
+
   <view class="line"></view>
   <!-- 精品课程 -->
   <view class="section2 box-pad">
     <view class="box-title">
       <text class="text1">{{boutiqueVideo.name}}</text>
       <navigator url="/pages/course/course" class="fl-right more ms-title" hover-class="none">
-        <text>全部  ></text>
+        <text>全部></text>
       </navigator>
     </view>
-    <view class="in-course" wx:for="{{boutiqueVideo.boutique_data}}">
+    <view class="in-course" wx:for="{{boutiqueVideo.boutique_data}}" wx:key="index">
       <navigator class="details" hover-class="none" url="/pages/course-details/details?id={{item.video_id}}">
         <view class="imges fl-left">
           <view class="audio" wx:if="{{item.thetype==2}}">
@@ -75,7 +75,6 @@
         </view>
       </navigator>
     </view>
-
   </view>
   <view class="line"></view>
   <!-- 免费课程 -->
@@ -86,7 +85,7 @@
         <text>全部></text>
       </navigator>
     </view>
-    <view class="in-course"  wx:for="{{freeVideo.freevideo_data}}">
+    <view class="in-course"  wx:for="{{freeVideo.freevideo_data}}" wx:key="{{index}}">
       <navigator class="details" hover-class="none" url="/pages/course-details/details?id={{item.video_id}}">
         <view class="imges fl-left">
           <view class="audio" wx:if="{{item.thetype==2}}">
@@ -103,7 +102,6 @@
             <text class="ma-title ">{{item.teacher_name}}</text>
             <text class="ms-title">{{item.summary}}</text>
           </view>
-
           <view class="ms-title font28">
             <text class="fl-left">{{item.clicks}}次学习</text>
             <view class="price red-title fl-right">
@@ -113,4 +111,19 @@
       </navigator>
     </view>
   </view>
+</view>
+<view class="pop {{showView?'show':'hide'}}" >
+<view class="pop-main">
+<text class="iconfont {{playStatus?'':'icon-close'}} fl-left" bindtap="onChangeShowState"></text>
+<image class="img fl-left" src="{{VideoPic}}"></image>
+<view class="cont fl-left">
+<view class="font28 n-nowrap-1"><text>{{songData.songName}}</text></view>
+<text class="font24 min-title">{{totalTime}}</text>
+<text class="font24 min-title">{{teacher_name}}</text>
+</view>
+<view class=" play_pause  fl-right" bindtap="audioPlay" data-item='{{songData}}'>
+    <image class="img img2 " src="{{playStatus?'../../images/ajf.png':'../../images/tx.png'}}"></image>
+</view>
+ <navigator url='/pages/audio-details/audesc' class="more  fl-right"><text class=" iconfont icon-openup"></text>  </navigator>
+</view>
 </view>

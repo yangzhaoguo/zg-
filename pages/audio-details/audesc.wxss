@@ -1,17 +1,24 @@
 @import "/pages/iconstyle/icon.wxss";
+page{
+ height: 100% 
+}
+.audiomian{
+height: 100%
+}
 .audio {
+  width: 100%;
   position: relative;
-  height: 952rpx;
+  height:100%;
+  bottom: 390rpx;
   box-sizing: border-box;
   text-align: center;
   overflow: hidden;
   background: #4f5a6e;
-  background: -webkit-linear-gradient(left, #16181f, #4f5a6e);
-  background: -o-linear-gradient(right, #16181f, #4f5a6e);
-  background: -moz-linear-gradient(right, #16181f, #4f5a6e);
-  background: linear-gradient(to right, #16181f, #4f5a6e);
+background: linear-gradient(210deg, #4f5a6e 20%,#16181f 80%);
+background: -webkit-linear-gradient(210deg, #4f5a6e 20%,#16181f 80%);
+background: -o-linear-gradient(210deg, #4f5a6e 20%,#16181f 80%);
+background: -moz-linear-gradient(210deg, #4f5a6e 20%,#16181f 80%);
 }
-
 
 .editor {
   padding: 32rpx;
@@ -30,12 +37,27 @@
   height: 340rpx;
   border-radius: 100%;
   border: 10px solid #343c49;
-  margin-top: 242rpx;
+  position: absolute;
+ bottom: 240rpx;
+  left: 50%;
+  margin-left:-170rpx;
+ 
 }
 .audio .title{
   color: #fff;
-  margin-top: 16rpx;
-  padding: 0 32rpx;
+
+
+position: absolute;
+text-align: center;
+ bottom: 140rpx;
+ width: 100%
+ 
+
+}
+.audio .title text{
+ height: 40rpx;
+ padding: 0 32rpx;
+
 }
 /* 音频滚动条start */
 
@@ -62,9 +84,12 @@ margin: 0 10px;
 /* 音频滚动条end */
 
 .audio-bf{
-  position: relative;
-  margin:54rpx auto;
-  line-height: 176rpx;
+  position: absolute;
+  bottom:152rpx;
+  left: 0;
+  background: #fff;
+
+width: 100%;
   text-align: center
 
 }
@@ -103,7 +128,8 @@ margin: 0 10px;
   line-height: 98rpx;
   width: 100%;
   display: flex;
-  position: relative;
+  position: absolute;
+  bottom: 0;
 }
 .tab-nav .flex-item{
   flex: 1;
@@ -124,7 +150,10 @@ margin: 0 10px;
 
 /*时间条*/
 .songTimeBar{
-  padding-bottom: 160rpx;
+  padding-bottom: 0;
+  position: absolute;
+  bottom: 30rpx;
+  width: 100%
 }
 .songTimeBar .progressBar{
 	height: 80rpx;

@@ -2,7 +2,6 @@
 
 .my-bg{
 height: 300rpx;
-background: #f00;
 position: relative;
 
 }
@@ -26,9 +25,10 @@ font-weight:500;
 margin-top: 10rpx;
 }
 .login{
-color: #8C8383;
+color: black;
 border: none;
 background: none;
+font-size:40rpx
 }
 .login::after {
 border: none;

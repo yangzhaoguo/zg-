@@ -9,14 +9,11 @@
   max-width: 100%;
 }
 
-.n-video {
-  position: fixed;
-  top: 0;
-}
 
 .n-video video {
   height: 430rpx;
   width: 100%;
+  overflow: hidden;
 }
 
 .tab-cont{

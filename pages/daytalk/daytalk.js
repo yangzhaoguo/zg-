@@ -27,7 +27,6 @@ Page({
     wx.request({
       url: URL +'/Wx/DayList',
       complete: function (res) {
-        app.globalData.songRankList = res.data.data
         console.log(res.data);
         if (res.data.code == '200') {
           _this.setData({
@@ -86,14 +85,25 @@ Page({
     })
   },
   videoTo: function (e) {
-    app.globalData.audioIndex = e.currentTarget.dataset.id;
-    console.log(e.currentTarget.dataset.id);
-    app.globalData.songInfo = e.currentTarget.dataset.data;
-    app.globalData.sign = parseInt(e.currentTarget.dataset.sign, 10);
-    wx.setStorageSync('audioIndex', parseInt(e.currentTarget.dataset.id, 10));
-    wx.navigateTo({
-      url: '/pages/audio-details/audesc?type=1',
-    })
+    var user = wx.getStorageSync('user');
+    if (!user) {
+      app.globalData.audioIndex = e.currentTarget.dataset.id;
+      app.globalData.songInfo = e.currentTarget.dataset.data;
+      app.globalData.sign = parseInt(e.currentTarget.dataset.sign, 10);
+      wx.navigateTo({
+        url: '/pages/audio-details/audesc?type=1',
+      })
+    } else {
+      app.globalData.songRankList = e.currentTarget.dataset.data
+      app.globalData.audioIndex = e.currentTarget.dataset.id;
+      app.globalData.songInfo = e.currentTarget.dataset.data;
+      app.globalData.sign = parseInt(e.currentTarget.dataset.sign, 10);
+      app.globalData.teacher_name = '';
+      wx.setStorageSync('audioIndex', parseInt(e.currentTarget.dataset.id, 10));
+      wx.navigateTo({
+        url: '/pages/audio-details/audesc?type=1',
+      })
+    }
 
   },
   move: function (e) {
